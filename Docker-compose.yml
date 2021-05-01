@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  hello:
+    build: .docker/python
+    volumes:
+      - .:/var/Gitt
+
+
+#faire un autre docker compose pour serveur build .docker/serveur?
