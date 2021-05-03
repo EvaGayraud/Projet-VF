@@ -26,10 +26,11 @@ def load_house_attributes(url):
     df_paris['Nombre pieces principales'] = df_paris['Nombre pieces principales'].astype(int)
 
     # remove outliers
-    df_paris = df_paris[df_paris['Valeur fonciere'] <= 30000000]
+    df_paris = df_paris[df_paris['Valeur fonciere'] <= 15000000]
     df_paris = df_paris[df_paris['Surface reelle bati'] >= 10]
     df_paris = df_paris[df_paris['Nombre pieces principales'] <= 20]
     df_paris = df_paris[df_paris['Nombre pieces principales'] > 0]
+
 
     return df_paris
 
