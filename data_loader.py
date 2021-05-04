@@ -8,27 +8,20 @@ def load_house_attributes(url):
             'Type local', 'Commune', 'Code postal', 'Code departement']
     df0 = pd.read_csv(url, usecols=cols, low_memory=False, sep="|")
     df = df0.copy()
-
-    df['Type local'].replace('', np.nan, inplace=True)
+    
+    df.drop_duplicates()
     df.dropna(inplace=True)
-
-    df_paris = df[df['Code departement'] == '75']
-    df_paris = df_paris.drop_duplicates()
-    df_paris['Valeur fonciere'] = df_paris['Valeur fonciere'].str.replace(',', '.')
+    df = df[df['Code departement'] == '75']
 
     # convert to the correct type
-    df_paris['Valeur fonciere'] = df_paris['Valeur fonciere'].astype(float)
-    df_paris['Code postal'] = df_paris['Code postal'].astype(str)
-    df_paris['Nombre pieces principales'] = df_paris['Nombre pieces principales'].astype(int)
+    df['Valeur fonciere'] = df['Valeur fonciere'].str.replace(',', '.').astype(float)
+    df['Code postal'] = df['Code postal'].astype(str)
+    df['Nombre pieces principales'] = df['Nombre pieces principales'].astype(int)
 
     # remove outliers
-    df_paris = df_paris[df_paris['Valeur fonciere'] <= 1000000000]
-    df_paris = df_paris[df_paris['Surface reelle bati'] >= 10]
-    df_paris = df_paris[df_paris['Nombre pieces principales'] <= 20]
-    df_paris = df_paris[df_paris['Nombre pieces principales'] > 0]
+    df = df[df['Valeur fonciere'] <= 10000000]
+    df = df[df['Surface reelle bati'] >= 5]
+    df = df[df['Nombre pieces principales'] <= 20]
+    df = df[df['Nombre pieces principales'] > 0]
 
-
-    return df_paris
-
-
-
+    return df
