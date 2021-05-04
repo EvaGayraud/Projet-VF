@@ -19,7 +19,7 @@ def load_house_attributes(url):
     df['Nombre pieces principales'] = df['Nombre pieces principales'].astype(int)
 
     # remove outliers
-    df = df[df['Valeur fonciere'] <= 10000000]
+    df = df[df['Valeur fonciere'] <= 5000000]
     df = df[df['Surface reelle bati'] >= 5]
     df = df[df['Nombre pieces principales'] <= 20]
     df = df[df['Nombre pieces principales'] > 0]
