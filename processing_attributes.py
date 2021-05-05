@@ -5,13 +5,13 @@ import numpy as np
 
 def process_house_attributes(df, train, test):
     # we would like to exploit continuous data from 0 to 1
-    continuous = ["Surface reelle bati", "Nombre pieces principales"]
+    continuous = ['months', 'day', 'No disposition', 'Nombre de lots', "Surface reelle bati", "Nombre pieces principales"]
     cs = MinMaxScaler()
     trainContinuous = cs.fit_transform(train[continuous])
     testContinuous = cs.transform(test[continuous])
 
     # put into categorical data the qualitative variables
-    categorical = ["Type local", "Code postal"]
+    categorical = ["Code postal", 'Type local', 'Section', 'Type de voie']
     ord_enc = OrdinalEncoder()
     CategoricalBin = ord_enc.fit(df[categorical])
     trainCategorical = CategoricalBin.transform(train[categorical])
