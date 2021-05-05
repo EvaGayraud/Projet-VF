@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 from data_loader import load_house_attributes
 from sklearn.model_selection import train_test_split
@@ -14,8 +13,8 @@ train_x, test_x = process_house_attributes(df_paris, train, test)
 train_y = train["Valeur fonciere"]
 test_y = test["Valeur fonciere"]
 
-prediction_regr = regression(train_x, train_y, test_x)
-prediction_knn = knn(train_x, train_y, test_x)
+prediction_regr = regression(train_x, train_y)
+prediction_knn = knn(train_x, train_y)
 
 errors_regr = abs(prediction_regr - test_y)
 errors_knn = abs(prediction_knn - test_y)

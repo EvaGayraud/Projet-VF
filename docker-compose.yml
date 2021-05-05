@@ -1,9 +1,10 @@
 version: "3.9"
 services:
-  hello:
+  python:
     build: .docker/python
     volumes:
-      - .:/var/Gitt
-
+      - .:/usr/src/Projet-VF
+    ports:
+      - 55057:55057
 
 #faire un autre docker compose pour serveur build .docker/serveur?
