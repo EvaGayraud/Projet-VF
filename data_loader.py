@@ -37,6 +37,7 @@ def get_subsample():
 
 def load_house_attributes(df):
     df.drop_duplicates()
+
     df.dropna(inplace=True)
 
     # convert to the correct type
@@ -49,10 +50,14 @@ def load_house_attributes(df):
     df['Code postal'] = df['Code postal'].astype(str)
 
     # remove outliers
-    df = df[df['Valeur fonciere'] <= 5000000]
+    df = df[df['Valeur fonciere'] <= 1500000]
+    df = df[df['Valeur fonciere'] > 1000]
     df = df[df['Surface reelle bati'] >= 5]
     df = df[df['Nombre pieces principales'] <= 20]
     df = df[df['Nombre pieces principales'] > 0]
 
     return df
 
+
+df = get_subsample()
+load_house_attributes(df)

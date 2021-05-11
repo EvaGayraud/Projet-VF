@@ -7,7 +7,8 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
-df = data_loader.load_house_attributes('https://www.data.gouv.fr/fr/datasets/r/90a98de0-f562-4328-aa16-fe0dd1dca60f')
+df0 = data_loader.get_subsample()
+df = data_loader.load_house_attributes(df0)
 
 app.layout = html.Div([
 
