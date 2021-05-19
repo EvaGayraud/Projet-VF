@@ -1,5 +1,4 @@
 import pandas as pd
-from data_sources import source_choice
 
 
 def load_house_attributes(df):
