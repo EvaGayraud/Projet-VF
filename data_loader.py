@@ -10,10 +10,10 @@ def load_house_attributes(df):
     df = post_treatment_columns(df)
 
     # remove outliers
-    df = df[df['Valeur fonciere'] <= 1500000]
+    df = df[df['Valeur fonciere'] <= 10000000]
     df = df[df['Valeur fonciere'] > 1000]
     df = df[df['Surface reelle bati'] >= 5]
-    df = df[df['Nombre pieces principales'] <= 20]
+    df = df[df['Nombre pieces principales'] <= 12]
     df = df[df['Nombre pieces principales'] > 0]
 
     return df

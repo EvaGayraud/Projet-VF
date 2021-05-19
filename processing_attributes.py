@@ -18,7 +18,7 @@ def process_house_attributes(df, train, test):
     test_continuous = cs.transform(test[continuous])
 
     # put into categorical data the qualitative variables
-    categorical = ["Code postal", 'Type local', 'Section', 'Type de voie']
+    categorical = ["Commune", 'Type local', 'Section', 'Type de voie']
     ord_enc = OrdinalEncoder()
     categorical_bin = ord_enc.fit(df[categorical])
     train_categorical = categorical_bin.transform(train[categorical])

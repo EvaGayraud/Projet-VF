@@ -13,22 +13,16 @@ df = load_house_attributes(df0)
 
 app.layout = html.Div([
     html.H1("DVF Paris", style={'text-align': 'center'}),
-    dcc.Dropdown(id="months",
+
+    dcc.Dropdown(id="year",
                  options=[
-                     {"label": "Jan", "value": 1},
-                     {"label": "Fev", "value": 2},
-                     {"label": "Mars", "value": 3},
-                     {"label": "Avril", "value": 4},
-                     {"label": "Mai", "value": 5},
-                     {"label": "Juin", "value": 6},
-                     {"label": "Juillet", "value": 7},
-                     {"label": "Août", "value": 8},
-                     {"label": "Sep", "value": 9},
-                     {"label": "Oct", "value": 10},
-                     {"label": "Nov", "value": 11},
-                     {"label": "Dec", "value": 12}],
+                     {"label": "2016", "value": 2016},
+                     {"label": "2017", "value": 2017},
+                     {"label": "2018", "value": 2018},
+                     {"label": "2019", "value": 2019},
+                     {"label": "2020", "value": 2020}],
                  multi=False,
-                 value="Jan",
+                 value="2020",
                  style={'width': "40%"}
                  ),
 
@@ -41,16 +35,16 @@ app.layout = html.Div([
 @app.callback(
     [Output(component_id='output_container', component_property='children'),
      Output(component_id='dispersion', component_property='figure')],
-    [Input(component_id='months', component_property='value')]
+    [Input(component_id='year', component_property='value')]
 )
 def update_graph(option_slctd):
     print(option_slctd)
     print(type(option_slctd))
 
-    container = "The month chosen by user was: {}".format(option_slctd)
+    container = "The year chosen by user was: {}".format(option_slctd)
 
     dff = df.copy()
-    dff = dff[dff["months"] == option_slctd]
+    dff = dff[dff["year"] == option_slctd]
 
     fig = px.box(dff, x='Commune', y='Valeur fonciere', hover_name='Type local')
 
