@@ -20,4 +20,3 @@ def process_attributes(df):
 
     # return the concatenated data
     return attributes_norm
-

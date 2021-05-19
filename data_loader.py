@@ -35,4 +35,3 @@ def post_treatment_columns(df):
     df['day'] = df['Date mutation'].dt.day
 
     return df
-

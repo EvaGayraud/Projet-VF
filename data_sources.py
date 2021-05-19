@@ -30,13 +30,18 @@ def get_subsample():
         data_ = pd.read_csv(url, low_memory=False, sep="|")
 
         # drop columns based on number of null
-        data_ = data_.drop(['Code service CH', 'Reference document', '1 Articles CGI', '2 Articles CGI', '3 Articles CGI',
-                      '4 Articles CGI', '5 Articles CGI', 'B/T/Q', 'Prefixe de section', 'No Volume', '1er lot',
-                      'Surface Carrez du 1er lot', '2eme lot', 'Surface Carrez du 2eme lot', '3eme lot',
-                      'Surface Carrez du 3eme lot', '4eme lot', 'Surface Carrez du 4eme lot', '5eme lot',
-                      'Surface Carrez du 5eme lot', 'Identifiant local', 'Code voie', 'Code type local',
-                      'No Volume', 'Nature culture', 'Nature culture speciale', 'Surface terrain',
-                      'No voie', 'Voie', 'No plan'], axis=1)
+        data_ = data_.drop(
+            [
+                'Code service CH', 'Reference document', '1 Articles CGI', '2 Articles CGI', '3 Articles CGI',
+                '4 Articles CGI', '5 Articles CGI', 'B/T/Q', 'Prefixe de section', 'No Volume', '1er lot',
+                'Surface Carrez du 1er lot', '2eme lot', 'Surface Carrez du 2eme lot', '3eme lot',
+                'Surface Carrez du 3eme lot', '4eme lot', 'Surface Carrez du 4eme lot', '5eme lot',
+                'Surface Carrez du 5eme lot', 'Identifiant local', 'Code voie', 'Code type local',
+                'No Volume', 'Nature culture', 'Nature culture speciale', 'Surface terrain',
+                'No voie', 'Voie', 'No plan'
+            ],
+            axis=1
+        )
 
         data = data_[data_['Code departement'] == '75']
         del data_

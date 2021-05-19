@@ -12,9 +12,7 @@ df0 = source_choice()
 df = load_house_attributes(df0)
 
 app.layout = html.Div([
-
     html.H1("DVF Paris", style={'text-align': 'center'}),
-
     dcc.Dropdown(id="months",
                  options=[
                      {"label": "Jan", "value": 1},
@@ -36,10 +34,9 @@ app.layout = html.Div([
 
     html.Div(id='output_container', children=[]),
     html.Br(),
-
     dcc.Graph(id='dispersion', figure={})
-
 ])
+
 
 @app.callback(
     [Output(component_id='output_container', component_property='children'),
