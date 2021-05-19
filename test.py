@@ -6,6 +6,7 @@ from model import regression
 from model import knn
 
 
+"""
 df_paris = load_house_attributes('https://www.data.gouv.fr/fr/datasets/r/90a98de0-f562-4328-aa16-fe0dd1dca60f')
 train, test = train_test_split(df_paris, test_size=0.25, random_state=42)
 
@@ -20,7 +21,7 @@ errors_regr = abs(prediction_regr - test_y)
 errors_knn = abs(prediction_knn - test_y)
 print('Mean Absolute Error regr:', round(np.mean(errors_regr), 2), 'euros.')
 print('Mean Absolute Error knn:', round(np.mean(errors_knn), 2), 'euros.')
-
+"""
 """attributes = {'Surface reelle bati': [20],
               'Nombre de piece principales': [1],
               'Type local': ['Appartement'],

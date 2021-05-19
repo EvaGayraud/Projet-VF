@@ -1,5 +1,6 @@
 import plotly.express as px
-import data_loader
+from data_loader import load_house_attributes
+from data_sources import source_choice
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -7,8 +8,8 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
-df0 = data_loader.get_subsample()
-df = data_loader.load_house_attributes(df0)
+df0 = source_choice()
+df = load_house_attributes(df0)
 
 app.layout = html.Div([
 
@@ -61,7 +62,3 @@ def update_graph(option_slctd):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
-
-
