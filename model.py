@@ -3,7 +3,6 @@ from sklearn.neighbors import KNeighborsRegressor
 
 
 def regression(train_x, train_y):
-
     regr = RandomForestRegressor(n_estimators=1000, max_depth=5, random_state=100)
     regression = regr.fit(train_x, train_y)
     for name, feature in zip(['months', 'day', 'No disposition', 'Nombre de lots', "Surface reelle bati",
@@ -16,7 +15,6 @@ def regression(train_x, train_y):
 
 
 def knn(train_x, train_y):
-
     knn = KNeighborsRegressor(n_neighbors=7)
     knn_pred = knn.fit(train_x, train_y)
 
