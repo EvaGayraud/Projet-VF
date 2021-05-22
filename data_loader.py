@@ -4,17 +4,17 @@ import pandas as pd
 def load_house_attributes(df):
     df.drop_duplicates()
     df.dropna(inplace=True)
+    pd.options.mode.chained_assignment = None
+    df = df[df['Type local'].isin(['Maison', 'Appartement'])]
     df['Valeur fonciere'] = df['Valeur fonciere'].str.replace(',', '.').astype(float)
 
     df = auto_type_columns(df)
     df = post_treatment_columns(df)
 
     # remove outliers
-    df = df[df['Valeur fonciere'] <= 10000000]
-    df = df[df['Valeur fonciere'] > 1000]
-    df = df[df['Surface reelle bati'] >= 5]
-    df = df[df['Nombre pieces principales'] <= 12]
-    df = df[df['Nombre pieces principales'] > 0]
+    df = df[df['Valeur fonciere'] <= 5000000]
+    df = df[df['Surface reelle bati'] < 300]
+    df = df[df['Nombre pieces principales'] <= 10]
 
     return df
 

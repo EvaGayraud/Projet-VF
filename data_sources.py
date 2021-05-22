@@ -1,5 +1,6 @@
 import os.path
-from tqdm.notebook import tqdm
+from tqdm.auto import tqdm
+import time
 import pandas as pd
 import json
 
@@ -26,7 +27,8 @@ def source_choice():
 
 def get_subsample():
     data_all_year = []
-    for year, url in tqdm(url_dict.items()):
+    print("Downloading DVF files")
+    for year, url in tqdm(url_dict.items(), desc="Loading…", ascii=False, ncols=75):
         data_ = pd.read_csv(url, low_memory=False, sep="|")
 
         # drop columns based on number of null
@@ -56,5 +58,6 @@ def get_subsample():
 
 
 def convert_json(df):
+    print("Convert to json")
     df.reset_index(drop=True, inplace=True)
     df.to_json(r'data/data.json')
