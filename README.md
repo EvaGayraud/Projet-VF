@@ -11,3 +11,14 @@ I also choose to retrieve Paris' property values (department = 75) and to focus 
 Scikit-learn module and more especially Random Forest regressor algorithm has been chosen.  
 
 Continuous data have been normalized and categorical data have been categorized.
+
+## Use
+
+Install dependencies
+
+```bash
+make json
+```
+
+
+
