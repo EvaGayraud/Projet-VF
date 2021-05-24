@@ -1,8 +1,13 @@
-# Analyse de la base de données DVF
+# DVF database analysis
 
-Ce projet se source des bases de données mises à disposition sur data.gouv.fr.
+This project gathers data.gouv.fr open source data.
 
-Pour obtenir plus de données, toutes les années disponibles ont été récupérées (2015 à 2020).
+To get more data, I choose to compile all years available (from 2015 to 2020).
 
-La base de données à été filtrée sur Paris et sur seulement les appartements ou les maisons afn d'obtenir un modèle plus précis.
+I also choose to retrieve Paris' property values (department = 75) and to focus on apartments' and houses' sales.
 
+## Model's choice
+
+Scikit-learn module and more especially Random Forest regressor algorithm has been chosen.  
+
+Continuous data have been normalized and categorical data have been categorized.
