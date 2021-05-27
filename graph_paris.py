@@ -46,7 +46,7 @@ def update_graph(option_slctd):
     dff = df.copy()
     dff = dff[dff["year"] == option_slctd]
 
-    fig = px.box(dff, x='Commune', y='Valeur fonciere', hover_name='Type local')
+    fig = px.box(dff, x='Commune', y='Prix au m²', hover_name='Surface reelle bati')
 
     return container, fig
 

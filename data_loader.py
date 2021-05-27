@@ -11,10 +11,12 @@ def load_house_attributes(df):
     df = auto_type_columns(df)
     df = post_treatment_columns(df)
 
+    # add columns to retrieve price per m²
+    df['Prix au m²'] = df['Valeur fonciere'] / df['Surface reelle bati']
+
     # remove outliers
-    df = df[df['Valeur fonciere'] <= 5000000]
-    df = df[df['Surface reelle bati'] < 300]
-    df = df[df['Nombre pieces principales'] <= 10]
+    df = df[df['Prix au m²'] <= 25000]
+    df = df[df['Prix au m²'] >= 1500]
 
     return df
 
