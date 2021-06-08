@@ -28,4 +28,3 @@ def model(train_x, train_y):
     regression = regr.fit(train_x, train_y)
 
     return regression
-
