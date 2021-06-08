@@ -1,6 +1,6 @@
 import plotly.express as px
-from data_loader import load_house_attributes
 from data_sources import source_choice
+import pandas as pd
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -8,8 +8,13 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
-df0 = source_choice()
-df = load_house_attributes(df0)
+PICKLE_DATASET_PATH = "_tmp_dataset.pkl"
+
+try:
+    df = pd.read_pickle(PICKLE_DATASET_PATH)
+except FileNotFoundError:
+    df = source_choice()
+    df.to_pickle(PICKLE_DATASET_PATH)
 
 app.layout = html.Div(
     [
