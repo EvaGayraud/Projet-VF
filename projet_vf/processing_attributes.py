@@ -1,6 +1,5 @@
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
-import pandas as pd
 import numpy as np
 
 
@@ -14,9 +13,8 @@ def process_house_attributes(train, test):
         "Nombre pieces principales",
     ]
 
-    ss = StandardScaler()
-    train_continuous = ss.fit_transform(train[continuous])
-    test_continuous = ss.fit_transform(test[continuous])
+    train_continuous = train[continuous]
+    test_continuous = test[continuous]
 
     # put into categorical data the qualitative variables
     categorical = ["Commune", "Type local"]

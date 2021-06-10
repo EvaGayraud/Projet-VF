@@ -5,6 +5,6 @@ services:
     volumes:
       - .:/usr/src/Projet-VF
     ports:
-      - 55057:55057
+      - 8050:8050
 
 #faire un autre docker compose pour serveur build .docker/serveur?

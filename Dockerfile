@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 55057
+EXPOSE 8050
 
 CMD [ "python", "./graph_paris.py" ]
