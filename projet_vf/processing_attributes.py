@@ -1,6 +1,7 @@
-from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.decomposition import PCA
 import numpy as np
+from sklearn.pipeline import Pipeline
 
 
 def process_house_attributes(train, test):
@@ -18,14 +19,16 @@ def process_house_attributes(train, test):
 
     # put into categorical data the qualitative variables
     categorical = ["Commune", "Type local"]
-    encoder = OneHotEncoder(sparse=False)
-    train_categorical = encoder.fit_transform(train[categorical])
-    test_categorical = encoder.fit_transform(test[categorical])
+
+    pipeline_cat = Pipeline([('onehotencode', OneHotEncoder(sparse=False)),
+                             ('reductor', PCA())
+                             ])
+
+    train_categorical = pipeline_cat.fit_transform(train[categorical])
+    test_categorical = pipeline_cat.fit_transform(test[categorical])
 
     train_x = np.hstack([train_categorical, train_continuous])
     test_x = np.hstack([test_categorical, test_continuous])
 
     # return the concatenated data
     return train_x, test_x
-
-
