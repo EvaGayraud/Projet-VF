@@ -1,8 +1,5 @@
 from pathlib import Path
-from tqdm.auto import tqdm
-import time
 import pandas as pd
-import json
 from columns_treatment import auto_type_columns
 from columns_treatment import post_treatment_columns
 
@@ -95,11 +92,11 @@ def get_subsample():
     df = post_treatment_columns(df)
 
     # add columns to retrieve price per m²
-    df["Prix au m²"] = df["Valeur fonciere"] / df["Surface reelle bati"]
+    df["Prix au m2"] = df["Valeur fonciere"] / df["Surface reelle bati"]
 
     # remove outliers
-    df = df[df["Prix au m²"] <= 25000]
-    df = df[df["Prix au m²"] >= 1500]
+    df = df[df["Prix au m2"] <= 25000]
+    df = df[df["Prix au m2"] >= 1500]
 
     df = convert_csv(df)
 

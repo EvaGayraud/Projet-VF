@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+      python:
+        build:
+          context: ./
+          dockerfile: ./projet_vf/Dockerfile
+        ports:
+          - 80:8050

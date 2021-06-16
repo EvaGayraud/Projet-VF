@@ -7,6 +7,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
+server = app.server
 
 PICKLE_DATASET_PATH = "_tmp_dataset.pkl"
 
@@ -55,10 +56,10 @@ def update_graph(option_slctd):
     dff = df.copy()
     dff = dff[dff["year"] == option_slctd]
 
-    fig = px.box(dff, x="Commune", y="Prix au m²", hover_name="Surface reelle bati")
+    fig = px.box(dff, x="Commune", y="Valeur fonciere", hover_name="Surface reelle bati")
 
     return container, fig
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, host="0.0.0.0", port=8050)
