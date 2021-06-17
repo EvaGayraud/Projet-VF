@@ -12,13 +12,6 @@ Scikit-learn module and more especially Random Forest regressor algorithm has be
 
 Continuous data have been normalized and categorical data have been categorized.
 
-## Use
-
-Install dependencies
-
-```bash
-make json
-```
 
 
 
